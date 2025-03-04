@@ -19,8 +19,10 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Text="Enter Bols" Margin="10"/>
+        <Label Grid.Row="0" Grid.Column="1" Text="{Binding ConnectedText}" Margin="15" VerticalTextAlignment="Start" VerticalOptions="Start" FontSize="Subtitle" HorizontalOptions="End"></Label>
 
-        <Editor Grid.Row="1" Grid.Column="0" Margin="10" Text="{Binding BolText, Mode=TwoWay}"/>
+
+        <Editor Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Margin="10" Text="{Binding BolText, Mode=TwoWay}"/>
 
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
@@ -63,7 +65,6 @@
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-
                             <CustomControls:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding BolId}"></CustomControls:CustomLabel>
                             <CustomControls:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding OrderId}"></CustomControls:CustomLabel>
                             <CustomControls:CustomLabel  Grid.Row="0" Grid.Column="2" Text="{Binding SourceId}"></CustomControls:CustomLabel>
@@ -77,5 +78,7 @@
 
         </Grid>
         <Button Grid.Row="2" Text="Get Orders" Command="{Binding LookupOrdersCommand}"></Button>
+        <Button Grid.Row="2" Grid.Column="1" Text="Check Connection" Command="{Binding CheckConnectionCommand}" WidthRequest="200"></Button>
+
     </Grid>
 </ContentPage>

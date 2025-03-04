@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using OrderLookup.Sql.Factories;
 using OrderLookup.Sql.Interfaces;
 using OrderLookup.Sql.Managers;
 using OrderLookup.Sql.Repos;
@@ -24,6 +25,9 @@ namespace OrderLookup
             
             // Managers
             builder.Services.AddSingleton<SqlSettingsManager>();
+
+            // Factories
+            builder.Services.AddScoped<RepoFactory>();
 
             // Views
             builder.Services.AddTransient<AppShell>();

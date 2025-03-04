@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace OrderLookup.ViewModels
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
             }
             FilePath = Preferences.Default.Get("filePath", "");
         }

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using OrderLookup.Helpers;
+using OrderLookup.Sql.Helpers;
 using OrderLookup.Sql.Interfaces;
 using OrderLookup.Sql.Models;
 using System.Collections.ObjectModel;
@@ -18,9 +19,12 @@ namespace OrderLookup.ViewModels
         [ObservableProperty]
         private string? _bolText;
 
+
         [ObservableProperty]
         private ObservableCollection<Order>? _bolResult = new ObservableCollection<Order>();
 
+        [ObservableProperty]
+        private string? _connectedText;
         #endregion
 
         #region Constructor
@@ -28,7 +32,10 @@ namespace OrderLookup.ViewModels
         {
             _orderLookupRepo = orderLookupRepo;
 
-
+            Task.Run(async () =>
+            {
+                await CheckConnection();
+            });
         }
         #endregion
 
@@ -36,17 +43,14 @@ namespace OrderLookup.ViewModels
         [RelayCommand]
         private async Task LookupOrders()
         {
-            try
-            {
-                var bolResult = await GetOrders();
-                bolResult.ForEach(order => BolResult!.Add(order));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
+            await RunOrderLookup();
         }
+        [RelayCommand]
+        private async Task CheckConnection()
+        {
+            await AttemptConnection();
+        }
+
         #endregion
 
         #region Private Methods
@@ -73,8 +77,44 @@ namespace OrderLookup.ViewModels
             });
             return result;
         }
+
+        private async Task AttemptConnection()
+        {
+            bool connectionResult = false;
+            try
+            {
+
+                connectionResult = await SqlHelpers.CheckDbConnection();
+            }
+            catch (Exception ex)
+            {
+            }
+            if (connectionResult)
+            {
+                ConnectedText = "Connected!";
+            }
+            else
+            {
+                ConnectedText = "Disconnected";
+            }
+        }
+
         #endregion
 
+        #region Public Methods 
+        public async Task RunOrderLookup()
+        {
+            try
+            {
+                var bolResult = await GetOrders();
+                bolResult.ForEach(order => BolResult!.Add(order));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        #endregion
 
     }
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderLookup.Sql
+namespace OrderLookup.Sql.Repos
 {
     public class BaseRepo
     {

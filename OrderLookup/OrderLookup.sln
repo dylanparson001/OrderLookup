@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderLookup.Csv", "..\Order
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderLookup.Helpers", "..\OrderLookup.Helpers\OrderLookup.Helpers.csproj", "{431A3869-7C39-4107-BC6D-E72AE28D7604}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderLookup.Tests", "..\OrderLookup.Tests\OrderLookup.Tests.csproj", "{15ABA822-F02D-455F-981F-3389026DADCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{431A3869-7C39-4107-BC6D-E72AE28D7604}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{431A3869-7C39-4107-BC6D-E72AE28D7604}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{431A3869-7C39-4107-BC6D-E72AE28D7604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15ABA822-F02D-455F-981F-3389026DADCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15ABA822-F02D-455F-981F-3389026DADCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15ABA822-F02D-455F-981F-3389026DADCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15ABA822-F02D-455F-981F-3389026DADCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
