@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OrderLookup.Views.SettingsView"
+             Title="Settings">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" ></RowDefinition>
+            <RowDefinition Height="Auto" ></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid ColumnSpacing="15" VerticalOptions="Start" RowSpacing="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="Auto" ></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <VerticalStackLayout HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" >
+
+                <Label Text="File Path To Save CSVs"></Label>
+                <Entry WidthRequest="500" Text="{Binding FilePath, Mode=TwoWay}"></Entry>
+            </VerticalStackLayout>
+        </Grid>
+        <Button 
+            Grid.Row="1" 
+            HorizontalOptions="Start" 
+            Text="Save Setting" 
+            WidthRequest="250" 
+            Margin="25"
+            Command="{Binding SaveSettingsCommand}"
+            ></Button>
+    </Grid>
+</ContentPage>
