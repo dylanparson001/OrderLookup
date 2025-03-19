@@ -6,12 +6,53 @@
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
-    <Color x:Key="Primary">#512BD4</Color>
-    <Color x:Key="PrimaryDark">#ac99ea</Color>
-    <Color x:Key="PrimaryDarkText">#242424</Color>
-    <Color x:Key="Secondary">#DFD8F7</Color>
-    <Color x:Key="SecondaryDarkText">#9880e5</Color>
-    <Color x:Key="Tertiary">#2B0B98</Color>
+    <!-- Light Mode Colors -->
+    <Color x:Key="Primary">#008080</Color>
+    <!-- Teal -->
+    <Color x:Key="PrimaryLight">#66B2B2</Color>
+    <!-- Lighter Teal -->
+    <Color x:Key="PrimaryText">#1C1C1C</Color>
+    <!-- Dark Gray for readability -->
+
+    <Color x:Key="Secondary">#FF8C42</Color>
+    <!-- Warm Accent -->
+    <Color x:Key="SecondaryLight">#FFCBA4</Color>
+    <!-- Softened Secondary -->
+    <Color x:Key="SecondaryText">#5A2E1E</Color>
+    <!-- Darker tone for contrast -->
+
+    <Color x:Key="Tertiary">#2B7A78</Color>
+    <!-- Muted Teal -->
+    <Color x:Key="TertiaryLight">#90E0D1</Color>
+    <!-- Softer Teal -->
+
+    <Color x:Key="Background">#F0F8FF</Color>
+    <!-- Light Cyan Background -->
+    <Color x:Key="Surface">#FFFFFF</Color>
+    <!-- White Surface for UI Elements -->
+    <Color x:Key="OnSurface">#333333</Color>
+    <!-- Darker Text for Visibility -->
+
+    <!-- Dark Mode Colors -->
+    <Color x:Key="PrimaryDark">#005F5F</Color>
+    <!-- Deeper Teal -->
+    <Color x:Key="PrimaryDarkText">#E0FFFF</Color>
+    <!-- Lighter Cyan Text -->
+
+    <Color x:Key="SecondaryDark">#D2691E</Color>
+    <!-- Darker Warm Accent -->
+    <Color x:Key="SecondaryDarkText">#FFB07C</Color>
+    <!-- Softer Contrast -->
+
+    <Color x:Key="TertiaryDark">#174E4F</Color>
+    <!-- Deep Cool Teal -->
+
+    <Color x:Key="BackgroundDark">#121212</Color>
+    <!-- Almost Black Background -->
+    <Color x:Key="SurfaceDark">#1E1E1E</Color>
+    <!-- Dark Gray for Elements -->
+    <Color x:Key="OnSurfaceDark">#D0D0D0</Color>
+    <!-- Light Gray for Readability -->
 
     <Color x:Key="White">White</Color>
     <Color x:Key="Black">Black</Color>

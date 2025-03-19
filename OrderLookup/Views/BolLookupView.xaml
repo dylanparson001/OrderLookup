@@ -19,14 +19,26 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Text="Enter Bols" Margin="10"/>
-        <Label Grid.Row="0" Grid.Column="1" Text="{Binding ConnectedText}" Margin="15" VerticalTextAlignment="Start" VerticalOptions="Start" FontSize="Subtitle" HorizontalOptions="End"></Label>
+
+        <HorizontalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Start" Margin="5">
+
+            <Label Text="{Binding ConnectedText}" 
+               Margin="15"
+               VerticalTextAlignment="Start"
+               VerticalOptions="Start"
+               FontSize="Subtitle"
+               >
+
+            </Label>
+            <Button Text="Check Connection" Command="{Binding CheckConnectionCommand}" WidthRequest="150" HeightRequest="50"></Button>
+        </HorizontalStackLayout>
 
 
-        <Editor Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Margin="10" Text="{Binding BolText, Mode=TwoWay}"/>
+        <Editor Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" Margin="5" Text="{Binding BolText, Mode=TwoWay}"/>
 
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -48,10 +60,14 @@
             <Label Grid.Row="0" Grid.Column="5" Text="Status"></Label>
             <Label Grid.Row="0" Grid.Column="6" Text="Status Date"></Label>
 
-            <CollectionView Grid.Row="1" Grid.ColumnSpan="7"  ItemsSource="{Binding BolResult}">
+            <CollectionView Grid.Row="1" 
+                            Grid.ColumnSpan="7" 
+                            ItemsSource="{Binding BolResult}"
+                            BackgroundColor="{AppThemeBinding Dark={StaticResource PrimaryDark}}"
+                            >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid >
+                        <Grid Padding="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"></RowDefinition>
                             </Grid.RowDefinitions>
@@ -69,16 +85,45 @@
                             <CustomControls:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{Binding OrderId}"></CustomControls:CustomLabel>
                             <CustomControls:CustomLabel  Grid.Row="0" Grid.Column="2" Text="{Binding SourceId}"></CustomControls:CustomLabel>
                             <CustomControls:CustomLabel  Grid.Row="0" Grid.Column="3" Text="{Binding PickupId}"></CustomControls:CustomLabel>
+                            <CustomControls:CustomLabel  Grid.Row="0" Grid.Column="4" Text="{Binding DestinationId}"></CustomControls:CustomLabel>
                             <CustomControls:CustomLabel Grid.Row="0"  Grid.Column="5"  Text="{Binding Processing_Status}"></CustomControls:CustomLabel>
                             <CustomControls:CustomLabel Grid.Row="0"  Grid.Column="6"  Text="{Binding Status_Date}"></CustomControls:CustomLabel>
-                        </Grid> 
+                        </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
         </Grid>
-        <Button Grid.Row="2" Text="Get Orders" Command="{Binding LookupOrdersCommand}"></Button>
-        <Button Grid.Row="2" Grid.Column="1" Text="Check Connection" Command="{Binding CheckConnectionCommand}" WidthRequest="200"></Button>
+
+        <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand">
+
+            <Button 
+                Text="Get Orders" 
+                Command="{Binding LookupOrdersCommand}" 
+                WidthRequest="150" 
+                HeightRequest="50"
+                Margin="5"
+                >
+            </Button>
+
+            <Button
+                Text="Save to CSV" 
+                Command="{Binding SaveToCsvCommand}" 
+                WidthRequest="150" 
+                HeightRequest="50"
+                Margin="5"
+                >
+            </Button>
+            <Label Text="CSV saved successfully to: "
+                   IsVisible="{Binding IsFileSaved}"
+                >
+            </Label>
+            <Label Text="{Binding FilePath}"
+                   IsVisible="{Binding IsFileSaved}"
+                   
+                >
+            </Label>
+        </HorizontalStackLayout>
 
     </Grid>
 </ContentPage>

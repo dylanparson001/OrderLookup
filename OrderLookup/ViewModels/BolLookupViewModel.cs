@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using OrderLookup.Csv;
 using OrderLookup.Helpers;
 using OrderLookup.Sql.Helpers;
 using OrderLookup.Sql.Interfaces;
@@ -25,6 +26,12 @@ namespace OrderLookup.ViewModels
 
         [ObservableProperty]
         private string? _connectedText;
+
+        [ObservableProperty]
+        private bool _isFileSaved = false;
+
+        [ObservableProperty]
+        private string _filePath = "";
         #endregion
 
         #region Constructor
@@ -49,6 +56,16 @@ namespace OrderLookup.ViewModels
         private async Task CheckConnection()
         {
             await AttemptConnection();
+        }
+        
+        [RelayCommand]
+        private async Task SaveToCsv()
+        {
+            await SaveOrdersToCsv();
+            IsFileSaved = true;
+
+            await Task.Delay(5000);
+            IsFileSaved = false;
         }
 
         #endregion
@@ -97,6 +114,19 @@ namespace OrderLookup.ViewModels
             {
                 ConnectedText = "Disconnected";
             }
+        }
+
+        private async Task SaveOrdersToCsv()
+        {
+            if (BolResult == null)
+            {
+                return;
+            }
+
+            var csvManager = new CsvManager();
+            FilePath = csvManager.GetCurrentFolderPath();
+            await csvManager.SaveCsvFile(BolResult.ToList());
+
         }
 
         #endregion
