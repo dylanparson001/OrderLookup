@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "OrderLookup.Helpers": {
+      "commandName": "MsixPackage"
+    }
+  }
+}

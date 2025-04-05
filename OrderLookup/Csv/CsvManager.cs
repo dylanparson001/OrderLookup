@@ -37,13 +37,20 @@ namespace OrderLookup.Csv
             var csv = new StringBuilder();
 
             DateTime currentDate = DateTime.Now;
+
             string currentDateString = currentDate.ToString("MM-dd-yyyy");
 
-            string csvFileName = $"Order Lookup {currentDateString}";
+            string csvFileName = $"Order Lookup {bolList.First().BolId} {currentDateString}";
 
             string fullPath = Path.Combine(path, csvFileName);
 
+            if (File.Exists($"{fullPath}.csv"))
+            {
+                Random rnd = new Random();
+                string randomCsvFileName = $"{csvFileName} ({rnd.Next(1, 1000)})";
+                fullPath = Path.Combine(path, randomCsvFileName);
 
+            }
             sourceFilePaths.Add(fullPath);
 
             csv.AppendLine("BOL ID, ORDER ID, SOURCE ID, PICKUP ID, DESTINATION ID, PROCESSING STATUS, STATUS DATE");
