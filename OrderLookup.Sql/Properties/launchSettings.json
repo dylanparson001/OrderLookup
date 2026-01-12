@@ -1,7 +1,0 @@
-{
-  "profiles": {
-    "OrderLookup.Sql": {
-      "commandName": "Project"
-    }
-  }
-}

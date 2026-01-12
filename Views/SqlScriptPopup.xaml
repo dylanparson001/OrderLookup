@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OrderLookup.Views.SqlScriptPopup"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"  
+             BackgroundColor="{AppThemeBinding Dark={StaticResource Black}}"
+             xmlns:handler="clr-namespace:OrderLookup.Handlers"  
+             xmlns:viewModels="clr-namespace:OrderLookup.ViewModels"
+               x:DataType="viewModels:SqlScriptPopupViewModel">
+    <Border
+        StrokeThickness="0"
+        BackgroundColor="{AppThemeBinding Dark={StaticResource Black}}"
+        Padding="16"
+        WidthRequest="320">
+
+        <VerticalStackLayout Spacing="12">
+            <handler:CustomLabel Text="SQL Script" FontSize="18" FontAttributes="Bold" />
+
+            <ScrollView HeightRequest="300">
+                <handler:CustomLabel Text="{Binding SqlScript}" LineBreakMode="WordWrap" />
+            </ScrollView>
+            <Button Text="OK" Command="{Binding OkButtonClickedCommand}">
+                
+            </Button>
+        </VerticalStackLayout>
+    </Border>
+</toolkit:Popup>
